@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  background: rgb(44, 47, 59);
+  background: -webkit-linear-gradient(
+    to right,
+    rgb(40, 59, 34),
+    rgb(54, 60, 70),
+    rgb(32, 32, 43)
+  );
+  background: linear-gradient(
+    to right,
+    rgb(38, 51, 61),
+    rgb(50, 55, 65),
+    rgb(33, 33, 78)
+  );
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 50px;
+    background-color: #f4f4f4;
+    text-align: center;
+  }
+  .navbar-nav .nav-item .nav-link.text-danger{
+    margin-right: 30px;
+  }
+  .navbar-nav .nav-item .nav-link.text-danger:hover {
+    background-color: red;
+    color: white !important;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+  #flash-messages {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    width: 20%;
+    text-align: center;
+  }
+  /* 🔹 Navbar */
+  nav {
+    background-color: #007bff;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: inline;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* 🔹 Container */
+  .container {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+
+ button{
+    padding:10px 20px 10px  20px !important;
+    border-radius: 5px;
+    font-size: 20px !important;
+    transition: 0.5s ease-in-out;
+    background-color: green !important;
+    color: white !important;
+ }
+
+ footer div.container {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: bold;
+}
+footer a:hover {
+  text-decoration: underline;
+}

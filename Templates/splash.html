@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading...</title>
+    <link rel="icon" href="/static/Images/doctor.png" />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='Styles/splash.css') }}"/>
+  
+  </head>
+  <body>
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/387/387569.png"
+      class="logo"
+    />
+    <script>
+      function redirectToLoginPage() {
+        document.body.classList.add("fade-out"); // Apply fade-out effect
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 1000); // Redirect after 1s
+      }
+
+      // Redirect after 3 seconds
+      setTimeout(redirectToLoginPage, 3000);
+    </script>
+  </body>
+</html>

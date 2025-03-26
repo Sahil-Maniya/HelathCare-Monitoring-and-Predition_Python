@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verify OTP</title>
+    <link rel = "icon" href="/static/Images/doctor.png"/>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2>Enter OTP</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" id="otp" name="otp" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Verify OTP</button>
+        </form>
+    </div>
+    <script>
+        function sendOTP() {
+            fetch("/send_otp", {
+                method: "POST"
+            })
+            .then(response => response.json())
+            .then(data => alert(data.message || data.error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brain Tumor Detection</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="icon" href="/static/Images/doctor.png" />  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Styles/brain_tumor_detection.css')}}" />
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="dashboard">Health Dashboard</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="brain_tumor_detection">Brain Tumor Detection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="diabetes_prediction">Diabetes Prediction</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="chat">Chatbot</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li class="dropdown-header text-center"><strong>{{ user.name }}</strong></li>
+              <li class="dropdown-item"><i class="fas fa-envelope"></i> {{ user.email }}</li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item text-danger" href="{{ url_for('logout') }}">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+      </div>
+    </nav>
+
+
+    <!-- Page Title -->
+    <h1>Upload MRI Scan for Brain Tumor Detection</h1>
+
+    <!-- Image Upload Form -->
+    <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+      <input type="file" id="file1" name="file1" accept="image/*">
+      <br><br>
+      <input type="submit" value="Upload & Detect">
+      <p class="alert-danger" id="error-message" style="display:none;">🚫 Please select an image before uploading.</p>
+    </form>
+
+    <!-- Display the Result and Image if Detected -->
+    {% if result %}
+    <h1 class="result-text">Result: {{ result }}</h1>
+    <img src="{{ url_for('static', filename='output.jpg') }}" />
+    {% endif %}
+    <!-- Suggestions  -->
+    {% if result == 'Brain Cancer' %}
+    <div class="container mt-4 p-3 bg-dark text-white rounded">
+      <h2 style="color: white">⚕️ Navigating Brain Tumor Treatment & Recovery</h2>
+      <div style="color: white">
+        <p>🏥 Immediately consult an oncologist specializing in brain cancer.</p>
+        <p>🧲 Undergo necessary diagnostic tests such as MRI, CT scans, and biopsy.</p>
+        <p>🔬 Explore treatment options including surgery, radiation therapy, and chemotherapy.</p>
+        <p>💉 Consider targeted therapy or immunotherapy based on medical advice.</p>
+        <p>🥦 Maintain a balanced diet with high-protein, vitamin-rich foods to support recovery.</p>
+        <p>🏋️ Stay physically active with gentle exercises as recommended by your doctor.</p>
+        <p>💊 Follow a strict medication regimen and attend all follow-up appointments.</p>
+        <p>🧘 Manage stress through meditation, deep breathing, or therapy.</p>
+        <p>😴 Get adequate sleep and proper rest to aid recovery.</p>
+        <p>💧 Stay hydrated and avoid alcohol, tobacco, and other harmful substances.</p>
+        <p>🤝 Join cancer support groups for emotional and psychological support.</p>
+        <p>📝 Keep track of symptoms and report any worsening conditions to your doctor.</p>
+        <p>⚠️ Be aware of potential side effects of treatments and seek medical guidance.</p>
+        <p>😊 Maintain a positive outlook and lean on family and friends for support.</p>
+        <p>🔬 Consider participating in clinical trials if recommended by your doctor.</p>
+      </div>
+    </div>
+    
+    {% endif %}
+
+    <!-- JavaScript for Image Selection Validation -->
+    <script>
+      function validateForm() {
+        var fileInput = document.getElementById("file1");
+        var errorMessage = document.getElementById("error-message");
+        if (fileInput.files.length === 0) {
+          errorMessage.style.display = "block";
+          return false;
+        } else {
+          errorMessage.style.display = "none";
+          return true;
+        }
+      }
+    </script>
+</body>
+</html>

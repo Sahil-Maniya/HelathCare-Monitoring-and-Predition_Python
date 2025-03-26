@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="/static/Images/doctor.png" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='Styles/login.css') }}"
+    />
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+    <div id="flash-messages">
+      {% for category, message in messages %}
+      <div
+        class="alert alert-{{ category }} flash-messages"
+        role="alert"
+      >
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} 
+    {% endwith %}
+    <main class="form-signin w-100 m-auto justify-content-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <form method="post">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/387/387569.png"
+              class="rounded-circle user_img"
+              height="75"
+              width="70"
+            />
+            <span class="online_icon"></span>
+
+            <h1 class="h3 mb-3 fw-normal white-space:nowrap">Login Form</h1>
+
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+
+            <a href="{{ url_for('register') }}" class="btn btn-success"
+              >Register</a
+            >
+          </form>
+          <div
+            class="modal fade"
+            id="messageModal"
+            tabindex="-1"
+            aria-labelledby="messageModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="messageModalLabel">
+                    Notification
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  {% if success %}
+                  <p class="text-success">{{ success }}</p>
+                  {% endif %} {% if error %}
+                  <p class="text-danger">{{ error }}</p>
+                  {% endif %}
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-custom w-100">
+                    Login
+                  </button>
+                </div>
+                <!-- Register Button -->
+                <div class="register-section">
+                  <p>Once you have not registered, please firstly register.</p>
+                  <a href="{{ url_for('register') }}">
+                    <button class="register-btn">Register</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Check if passwords match from database before submitting the form
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+            let flashMessages = document.querySelectorAll(".flash-messages");
+
+            flashMessages.forEach(function (message) {
+                message.style.transition = "opacity 0.5s ease-out";
+                message.style.opacity = "0";
+
+                // Remove the message after fade-out
+                setTimeout(() => {
+                    if (message.parentNode) {
+                        message.parentNode.removeChild(message);
+                    }
+                }, 500);
+            });
+
+            // Remove flash messages container if empty
+            setTimeout(() => {
+                let flashContainer = document.getElementById("flash-messages");
+                if (flashContainer && flashContainer.childElementCount === 0) {
+                    flashContainer.remove();
+                }
+            }, 2500);
+        }, 2000);
+    });
+    </script>
+  </body>
+</html>
