@@ -14,7 +14,6 @@ body {
     animation: smooth3DHeartbeat 3s infinite ease-in-out;
   }
 
-  /* 3D Heartbeat Animation */
   @keyframes smooth3DHeartbeat {
     0% {
       transform: scale3d(1, 1, 1) translateZ(0px);

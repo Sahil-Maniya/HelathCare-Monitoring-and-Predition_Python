@@ -283,11 +283,8 @@ body,
       .msg_head {
         position: relative;
       }
-    
       @media (max-width: 576px) {
         .contacts_card {
           margin-bottom: 15px !important;
         }
  }
-
-
