@@ -42,8 +42,6 @@
           </li>
       </div>
     </nav>
-
-
     <!-- Page Title -->
     <h1>Upload MRI Scan for Brain Tumor Detection</h1>
 
@@ -86,18 +84,8 @@
     {% endif %}
 
     <!-- JavaScript for Image Selection Validation -->
-    <script>
-      function validateForm() {
-        var fileInput = document.getElementById("file1");
-        var errorMessage = document.getElementById("error-message");
-        if (fileInput.files.length === 0) {
-          errorMessage.style.display = "block";
-          return false;
-        } else {
-          errorMessage.style.display = "none";
-          return true;
-        }
-      }
+    <script src = "/static/Scripts/brain_tumor_detection.js">
+     
     </script>
 </body>
 </html>
