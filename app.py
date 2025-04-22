@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, session, url_for, jsonify, send_file
+from flask import Flask, render_template, request, redirect, flash, session, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 import sqlite3
@@ -17,26 +17,12 @@ import google.generativeai as genai
 from train_model import image_pre, predict
 import pickle
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'secret_key'  
 db = SQLAlchemy(app)  
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
-
-def init_db():
-    conn = sqlite3.connect("health.db")
-    cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS health_data (
-                        id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        user_id INTEGER,
-                        metric TEXT,
-                        value INTEGER,
-                        date TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
-    conn.commit()
-    conn.close()
-init_db()
 
 
 # Define User Model
@@ -51,14 +37,6 @@ class Captcha(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     captcha_text = db.Column(db.String(10), nullable=False)
     image_path = db.Column(db.String(200), nullable=False)
-
-# Define HealthData Model
-class HealthData(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    steps = db.Column(db.Integer, nullable=True)
-    calories = db.Column(db.Integer, nullable=True)
-    medical_history = db.Column(db.Text, nullable=True)
     
 
 # Initialize Database
@@ -437,19 +415,15 @@ def y_predict():
             output = prediction[0]  # Direct class prediction
 
         # Display appropriate message
-        result_message = (
-            "✅ No diabetes detected. Stay healthy! 🍏"
-            if output == 0
-            else "⚠️ High chance of diabetes! Consult a doctor. 🏥"
-        )
+        if output == 0:
+            result_message = "✅ No diabetes detected. Stay healthy! 🍏"
+        else:
+            result_message = "⚠️ High chance of diabetes! Consult a doctor. 🏥"
         return render_template('diabetes_prediction.html',user=user, prediction_text=result_message)
+    
     except Exception as e:
         print("Prediction Error:", e)
         return render_template('diabetes_prediction.html',user=user, prediction_text="Error in prediction. Please check input values.")
-
-@app.route("/download_pdf")
-def download_pdf():
-    return send_file("static/Reports/diabetes_report.pdf", as_attachment=True)
 
 if __name__ == "__main__":
     with app.app_context():
