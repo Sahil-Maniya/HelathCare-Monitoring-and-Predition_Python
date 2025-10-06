@@ -261,7 +261,7 @@ def get_health_data(user_id):
 # <!------------------------------------------------ Chatbot ------------------------------------------------!>
 
 genai.configure(api_key='AIzaSyCajCM6jhhRaXuBpV-9CpS89BLOp_TFuv4')
-API_URL = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=AIzaSyCajCM6jhhRaXuBpV-9CpS89BLOp_TFuv4"
+API_URL = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key={'AIzaSyCajCM6jhhRaXuBpV-9CpS89BLOp_TFuv4'}"
 chat_history = []
 
 def get_gemini_response(user_input):
