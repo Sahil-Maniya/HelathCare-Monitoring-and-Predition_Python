@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    transition: opacity 1s ease-in-out;
+    perspective: 1000px; /* Adds depth effect */
+  }
+
+  .logo {
+    width: 100px;
+    animation: smooth3DHeartbeat 3s infinite ease-in-out;
+  }
+
+  @keyframes smooth3DHeartbeat {
+    0% {
+      transform: scale3d(1, 1, 1) translateZ(0px);
+    }
+    30% {
+      transform: scale3d(1.2, 1.2, 1.2) translateZ(20px);
+    }
+    50% {
+      transform: scale3d(1, 1, 1) translateZ(0px);
+    }
+    70% {
+      transform: scale3d(1.2, 1.2, 1.2) translateZ(20px);
+    }
+    100% {
+      transform: scale3d(1, 1, 1) translateZ(0px);
+    }
+  }
+
+  /* Fade-out effect before redirect */
+  .fade-out {
+    opacity: 0;
+  }

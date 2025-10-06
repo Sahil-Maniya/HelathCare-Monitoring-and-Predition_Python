@@ -1,0 +1,116 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(44, 47, 59);
+    background: -webkit-linear-gradient(
+      to right,
+      rgb(40, 59, 34),
+      rgb(54, 60, 70),
+      rgb(32, 32, 43)
+    );
+    background: linear-gradient(
+      to right,
+      rgb(38, 51, 61),
+      rgb(50, 55, 65),
+      rgb(33, 33, 78)
+    );
+    font-size: 18px;
+    width: 100%;
+    height: 100vh;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1 {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+
+}
+input:hover{  
+    transform: scale(1); 
+    background: rgba(255, 255, 255, 0.1); }
+
+
+.login {
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-left: 600px;
+    width: 500px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.5s ease, background-color 0.3s ease;
+    background: transparent; 
+    color: white; 
+    
+}
+
+.login h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    transition: color 0.3s ease;
+    transition: text-shadow 0.3s ease;
+    transition: text-align 0.3s ease;
+    transition: letter-spacing 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: text-decoration 0.3s ease;
+    transition: text-decoration-thickness 0.3s ease;
+    transition: text-decoration-color 0.3s ease;
+    
+       
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+input:focus {
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px;
+    font-size: 14px;
+    color: #fff;
+    background: #4a77d4;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #3762bc;
+        
+}
+
+.navbar-nav .nav-item .nav-link.text-danger:hover {
+    background-color: red;
+    color: white !important;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+
+.container{
+    margin-left: 50px;   
+}
